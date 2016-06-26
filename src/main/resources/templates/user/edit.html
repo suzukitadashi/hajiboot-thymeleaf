@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>新規ユーザー作成</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css}" />
+</head>
+
+<body>
+
+	<div class="container">
+		<h1>顧客管理システム</h1>
+		<form class="form-signin" method="post" th:action="@{/user/create}"
+			th:object="${userForm}">
+			<h2 class="form-signin-heading">新規ユーザー作成</h2>
+
+			<div th:if="${#fields.hasAnyErrors()}">
+				<p th:each="err : ${#fields.allErrors()}" th:text="${err}"></p>
+			</div>
+
+			<input type="text" class="form-control" name="userid"
+				placeholder="Userid" required="required" autofocus="autofocus" /> <span
+				th:if="${#fields.hasErrors('userid')}" th:errors="*{userid}"
+				class="help-block">error!</span> <input type="password"
+				class="form-control" name="password" placeholder="Password"
+				required="required" /> <span
+				th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+				class="help-block">error!</span> <input type="text"
+				class="form-control" name="username" placeholder="Username"
+				required="required" autofocus="autofocus" /> <span
+				th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+				class="help-block">error!</span>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">作成</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -61,3 +61,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.classpath
+.project
+.mvn/
+.settings/
+bin/
+target/
+tmp/
